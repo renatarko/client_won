@@ -4,7 +4,7 @@ import * as S from "./styles";
 export type BannerPropos = {
   img: string;
   title: string;
-  subTitle: string;
+  subtitle: string;
   buttonLabel: string;
   buttonLink: string;
 };
@@ -12,7 +12,7 @@ export type BannerPropos = {
 const Banner = ({
   img,
   title,
-  subTitle,
+  subtitle,
   buttonLabel,
   buttonLink,
 }: BannerPropos) => (
@@ -21,7 +21,7 @@ const Banner = ({
 
     <S.Caption>
       <S.Title>{title}</S.Title>
-      <S.SubTitle dangerouslySetInnerHTML={{ __html: subTitle }} />
+      <S.Subtitle dangerouslySetInnerHTML={{ __html: subtitle }} />
       <Button as="a" href={buttonLink}>
         {buttonLabel}
       </Button>
