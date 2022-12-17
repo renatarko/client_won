@@ -13,7 +13,8 @@ const props = {
 
 describe("<Banner/>", () => {
   it("should render correctly", () => {
-    renderWithTheme(<Banner {...props} />);
+    const { container } = renderWithTheme(<Banner {...props} />);
+
     expect(
       screen.getByRole("heading", { name: /defy death/i })
     ).toBeInTheDocument();
@@ -25,5 +26,24 @@ describe("<Banner/>", () => {
     expect(
       screen.getByRole("img", { name: /Defy death/i })
     ).toBeInTheDocument();
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it("should render a Ribbon", () => {
+    renderWithTheme(
+      <Banner
+        {...props}
+        ribbon="My Ribbon"
+        ribbonSize="small"
+        ribbonCollor="secondary"
+      />
+    );
+
+    const ribbon = screen.getAllByText(/My Ribbon/i);
+
+    expect(ribbon).toBeInTheDocument();
+    expect(ribbon).toHaveStyle({ backgroundColor: "#3cd3c1" });
+    expect(ribbon).toHaveStyle({ height: "2.6rem", fontSize: "1.2rem" });
   });
 });
