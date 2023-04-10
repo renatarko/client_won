@@ -36,11 +36,11 @@ describe("<Banner/>", () => {
         {...props}
         ribbon="My Ribbon"
         ribbonSize="small"
-        ribbonCollor="secondary"
+        ribbonColor="secondary"
       />
     );
 
-    const ribbon = screen.getAllByText(/My Ribbon/i);
+    const ribbon = screen.getByText(/My Ribbon/i);
 
     expect(ribbon).toBeInTheDocument();
     expect(ribbon).toHaveStyle({ backgroundColor: "#3cd3c1" });
