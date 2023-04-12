@@ -1,6 +1,6 @@
+import { darken } from "polished";
 import styled, { css, DefaultTheme } from "styled-components";
 import { RibbonColors, RibbonProps } from ".";
-import { darken } from "polished";
 
 const wrapperModifiers = {
   color: (theme: DefaultTheme, color: RibbonColors) => css`
@@ -47,6 +47,7 @@ export const Wrapper = styled.div<Omit<RibbonProps, "children">>`
     align-items: center;
     font-weight: ${theme.font.bold};
     color: ${theme.colors.white};
+    z-index: ${theme.layers.alwaysOnTop};
 
     &::before {
       content: "";
