@@ -1,10 +1,10 @@
-import Banner, { BannerPropos } from "components/Banner";
+import Banner, { BannerProps } from "components/Banner";
 import Slider, { SliderSettings } from "components/Slider";
 
 import * as S from "./styles";
 
 export type BannerSliderProps = {
-  items: BannerPropos[];
+  items: BannerProps[];
 };
 
 const settings: SliderSettings = {
