@@ -98,7 +98,7 @@ export const BuyBox = styled.div`
 `;
 
 type PriceProps = {
-  isPromotional: boolean;
+  isPromotional?: boolean;
 };
 
 const priceModifiers = {

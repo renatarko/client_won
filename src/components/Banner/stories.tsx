@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import Banner, { BannerPropos } from ".";
+import Banner, { BannerProps } from ".";
 
 export default {
   title: "Banner",
@@ -21,13 +21,13 @@ export default {
   },
 } as Meta;
 
-export const Default: Story<BannerPropos> = (args) => (
+export const Default: Story<BannerProps> = (args) => (
   <div style={{ maxWidth: "104rem", margin: "0 auto" }}>
     <Banner {...args} />
   </div>
 );
 
-export const WithRibbon: Story<BannerPropos> = (args) => (
+export const WithRibbon: Story<BannerProps> = (args) => (
   <div style={{ maxWidth: "104rem", margin: "0 auto" }}>
     <Banner {...args} />
   </div>

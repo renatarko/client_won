@@ -5,6 +5,7 @@ import {
   Favorite,
   FavoriteBorder,
 } from "styled-icons/material";
+
 import * as S from "./styles";
 
 export type GameCardProps = {
