@@ -3,7 +3,7 @@ import { EnvelopeFill } from "styled-icons/bootstrap";
 import TextField, { TextFieldProps } from ".";
 
 export default {
-  title: "TextField",
+  title: "Form/TextField",
   component: TextField,
   args: {
     id: "email",
