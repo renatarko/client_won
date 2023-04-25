@@ -31,6 +31,7 @@ export default {
     lightGray: "#EAEAEA",
     gray: "#8F8F8F",
     darkGray: "#2E2F42",
+    error: "#FD3500",
   },
   spacings: {
     xxsmall: "0.8rem",
@@ -47,5 +48,9 @@ export default {
     overlay: 30,
     modal: 40,
     alwaysOnTop: 50,
+  },
+  transition: {
+    default: "0.3s ease-in-out",
+    fast: "0.1s ease-in-out",
   },
 } as const;
