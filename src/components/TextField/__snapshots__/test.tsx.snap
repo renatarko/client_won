@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField/> should render error message 1`] = `
+.c7 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.c0 .c3 {
+  border-color: #FD3500;
+}
+
+.c0 .c5,
+.c0 .c1 {
+  color: #FD3500;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #EAEAEA;
+  border-radius: 0.2rem;
+  padding: 0 1.6rem;
+  border: 0.2rem solid;
+  border-color: #EAEAEA;
+}
+
+.c4:focus-within {
+  box-shadow: 0 0 0.5rem #F231A5;
+}
+
+.c8 {
+  color: #030517;
+  font-family: Poppins,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+  font-size: 1.6rem;
+  padding: 0.8rem 0;
+  padding-right: 1.6rem;
+  background: transparent;
+  border: 0;
+  outline: none;
+  width: 100%;
+}
+
+.c2 {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 2.1rem;
+  color: #8F8F8F;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+.c6 > svg {
+  width: 100%;
+}
+
+.c9 {
+  color: #FD3500;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
+<div
+  class="c0"
+>
+  <label
+    class="c1 c2"
+    for="TextField"
+  >
+    TextField
+  </label>
+  <div
+    class="c3 c4"
+  >
+    <div
+      class="c5 c6"
+    >
+      <svg
+        aria-hidden="true"
+        class="c7"
+        data-testid="icon"
+        fill="currentColor"
+        focusable="false"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"
+        />
+      </svg>
+    </div>
+    <input
+      class="c8"
+      type="text"
+      value=""
+    />
+  </div>
+  <p
+    class="c9"
+  >
+    error message
+  </p>
+</div>
+`;
