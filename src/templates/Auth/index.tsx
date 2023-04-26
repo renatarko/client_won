@@ -14,7 +14,7 @@ const Auth = ({ title, children }: AuthProps) => {
         <S.BannerContent>
           <Logo id="banner" />
           <div>
-            <Heading>Seus jogos favoritos em um só lugar</Heading>
+            <Heading size="huge">Seus jogos favoritos em um só lugar</Heading>
             <S.SubTitle>
               A <strong>WON</strong> é a melhor e mais completa plataforma de
               games.
