@@ -1,6 +1,7 @@
 import { Email, Lock } from "styled-icons/material-outlined";
 
 import Button from "components/Button";
+import { FormWrapper, LinkForm } from "components/Form";
 import TextField from "components/TextField";
 import Link from "next/link";
 
@@ -8,7 +9,7 @@ import * as S from "./styles";
 
 const FormSignIn = () => {
   return (
-    <S.Wrapper>
+    <FormWrapper>
       <form>
         <TextField
           name="email"
@@ -26,14 +27,14 @@ const FormSignIn = () => {
         <Button size="large" fullWidth>
           Entrar
         </Button>
-        <S.LinkForm>
+        <LinkForm>
           Ainda não tem uma conta?
           <Link href="/sign-up">
             <a>Cadastre-se</a>
           </Link>
-        </S.LinkForm>
+        </LinkForm>
       </form>
-    </S.Wrapper>
+    </FormWrapper>
   );
 };
 
