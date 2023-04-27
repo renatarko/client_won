@@ -93,6 +93,9 @@ export const ContentWrapper = styled.div`
 
     ${LogoStyles.Wrapper} {
       margin-bottom: ${theme.spacings.medium};
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
   `}
 `;
