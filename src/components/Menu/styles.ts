@@ -43,7 +43,7 @@ export const MenuGroup = styled.div`
 export const MenuNav = styled.div`
   ${({ theme }) => css`
     ${media.greaterThan("medium")`
-      margin-left: ${theme.spacings.small}`}
+      margin-left: ${theme.spacings.small}`};
   `}
 `;
 
@@ -88,7 +88,7 @@ export const menuFull = styled.nav<menuFullProps>`
     flex-direction: column;
     justify-content: space-between;
     background: ${theme.colors.white};
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
