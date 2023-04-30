@@ -8,11 +8,6 @@ import {
 
 import * as S from "./styles";
 
-export type GameCardSliderProps = {
-  items: GameCardProps[];
-  color?: "white" | "black";
-};
-
 const settings: SliderSettings = {
   arrows: true,
   slidesToShow: 4,
@@ -48,8 +43,21 @@ const settings: SliderSettings = {
       },
     },
   ],
-  nextArrow: <ArrowRigth aria-label="next games" />,
-  prevArrow: <ArrowLeft aria-label="previous games" />,
+  nextArrow: (
+    <span>
+      <ArrowRigth aria-label="next games" />
+    </span>
+  ),
+  prevArrow: (
+    <span>
+      <ArrowLeft aria-label="previous games" />
+    </span>
+  ),
+};
+
+export type GameCardSliderProps = {
+  items: GameCardProps[];
+  color?: "white" | "black";
 };
 
 const GameCardSlider = ({ items, color = "white" }: GameCardSliderProps) => {

@@ -16,9 +16,9 @@ export type GameCardProps = {
   promotionalPrice?: string;
   favorite?: boolean;
   onFav?: () => void;
-  ribbon: React.ReactNode;
-  ribbonColor: RibbonColors;
-  ribbonSize: RibbonSizes;
+  ribbon?: React.ReactNode;
+  ribbonColor?: RibbonColors;
+  ribbonSize?: RibbonSizes;
 };
 
 const GameCard = ({

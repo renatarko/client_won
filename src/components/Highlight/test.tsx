@@ -5,16 +5,16 @@ import Highlight from ".";
 import * as S from "./styles";
 
 const props = {
-  title: "heading 1",
-  subtitle: "heading 2",
-  buttonLabel: "Buy now",
-  buttonLink: "/rs",
+  title: "Heading 1",
+  subtitle: "Heading 2",
   backgroundImage: "/img/red-dead-img.jpg",
+  buttonLabel: "Buy now",
+  buttonLink: "/rdr2",
 };
 
-describe("<Highligth/>", () => {
+describe("<Highlight />", () => {
   it("should render headings and button", () => {
-    renderWithTheme(<Highlight {...props} />);
+    const { container } = renderWithTheme(<Highlight {...props} />);
 
     expect(
       screen.getByRole("heading", { name: /heading 1/i })
@@ -24,7 +24,9 @@ describe("<Highligth/>", () => {
       screen.getByRole("heading", { name: /heading 2/i })
     ).toBeInTheDocument();
 
-    expect(screen.getByRole("link", { name: /Buy now/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /buy now/i })).toBeInTheDocument();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it("should render background image", () => {

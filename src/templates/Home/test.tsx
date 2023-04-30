@@ -31,24 +31,21 @@ describe("<Home/>", () => {
     expect(
       screen.getByRole("heading", { name: /contact/i })
     ).toBeInTheDocument();
-
+    // logos (menu/footer)
+    expect(screen.getAllByRole("img", { name: /won games/i })).toHaveLength(2);
     //should render the sections
-    expect(screen.getByRole("heading", { name: /new realeases/i })).toHaveStyle(
-      {
-        color: "#030517",
-      }
-    );
-    expect(screen.getByRole("heading", { name: /most populars/i })).toHaveStyle(
-      {
-        color: "#FAFAFA",
-      }
-    );
-    expect(screen.getByRole("heading", { name: /comming soon/i })).toHaveStyle({
-      color: "#FAFAFA",
-    });
-    expect(screen.getByRole("heading", { name: /free games/i })).toHaveStyle({
-      color: "#FAFAFA",
-    });
+    expect(
+      screen.getByRole("heading", { name: /new realeases/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /most populars/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /comming soon/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /free games/i })
+    ).toBeInTheDocument();
 
     // render section elements
     expect(screen.getAllByText(/defy death 1/i)).toHaveLength(1);

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Highligth/> should render background image 1`] = `
-.c4 {
+exports[`<Highlight /> should render headings and button 1`] = `
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -28,14 +28,19 @@ exports[`<Highligth/> should render background image 1`] = `
   padding: 0.8rem 3.2rem;
 }
 
-.c4:hover {
+.c5:hover {
   background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
 }
 
 .c0 {
   position: relative;
+  background-image: url(/img/red-dead-img.jpg);
+  background-position: center center;
+  background-size: cover;
   height: 23rem;
   display: grid;
+  grid-template-areas: "floatimage content";
+  grid-template-columns: 1.3fr 2fr;
 }
 
 .c0::after {
@@ -46,44 +51,75 @@ exports[`<Highligth/> should render background image 1`] = `
   background-color: rgba(0,0,0,0.6);
 }
 
-.c1 {
-  z-index: 10;
+.c0 .c1 {
   text-align: right;
-  padding: 1.6rem;
 }
 
 .c2 {
+  grid-area: content;
+  z-index: 10;
+  padding: 1.6rem;
+}
+
+.c3 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #FAFAFA;
 }
 
-.c3 {
-  font-size: 1.8rem;
+.c4 {
+  font-size: 1.4rem;
   font-weight: 300;
   color: #FAFAFA;
   margin-bottom: 3.2rem;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    height: 32rem;
+  }
+}
+
+@media (min-width:768px) {
+  .c2 {
+    -webkit-align-self: end;
+    -ms-flex-item-align: end;
+    align-self: end;
+    padding: 4.0rem;
+  }
+}
+
+@media (min-width:768px) {
+  .c3 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width:768px) {
+  .c4 {
+    font-size: 1.8rem;
+  }
 }
 
 <section
   class="c0"
 >
   <div
-    class="c1"
+    class="c1 c2"
   >
     <h2
-      class="c2"
-    >
-      heading 1
-    </h2>
-    <h3
       class="c3"
     >
-      heading 2
+      Heading 1
+    </h2>
+    <h3
+      class="c4"
+    >
+      Heading 2
     </h3>
     <a
-      class="c4"
-      href="/rs"
+      class="c5"
+      href="/rdr2"
     >
       <span>
         Buy now
@@ -91,14 +127,4 @@ exports[`<Highligth/> should render background image 1`] = `
     </a>
   </div>
 </section>
-`;
-
-exports[`<Highligth/> should render headings and button 1`] = `
-<main
-  class=""
->
-  <h1>
-    Highlight
-  </h1>
-</main>
 `;
