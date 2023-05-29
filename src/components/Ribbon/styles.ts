@@ -55,9 +55,9 @@ export const Wrapper = styled.div<Omit<RibbonProps, "children">>`
       right: 0;
       border-style: solid;
       border-left-width: 0rem;
-      borde-right-color: transparent;
+      border-right-color: transparent;
       border-bottom-color: transparent;
-      border-bottom-width: 0rem;
+      border-bottom-width: 1rem;
     }
 
     ${!!size && wrapperModifiers[size](theme)}
