@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import GameInfo, { GameInfoProps } from ".";
 
 export default {
-  title: "GameInfo",
+  title: "Game/GameInfo",
   component: GameInfo,
   parameters: {
     backgrounds: {
