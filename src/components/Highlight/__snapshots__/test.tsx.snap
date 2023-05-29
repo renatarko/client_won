@@ -39,7 +39,7 @@ exports[`<Highlight /> should render headings and button 1`] = `
   background-size: cover;
   height: 23rem;
   display: grid;
-  grid-template-areas: "floatimage content";
+  grid-template-areas: 'floatimage content';
   grid-template-columns: 1.3fr 2fr;
 }
 

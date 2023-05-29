@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import { renderWithTheme } from "utils/tests/helpers";
 
+import { renderWithTheme } from "utils/tests/helpers";
 import Highlight from ".";
 import * as S from "./styles";
 
@@ -50,7 +50,7 @@ describe("<Highlight />", () => {
     const { container } = renderWithTheme(<Highlight {...props} />);
 
     expect(container.firstChild).toHaveStyleRule(
-      "grid-template-areas",
+      'grid-template-areas',
       "'floatimage content'"
     );
 

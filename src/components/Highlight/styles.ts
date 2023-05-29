@@ -6,14 +6,14 @@ type WrapperProps = Pick<HighlightProps, "backgroundImage" | "alignment">;
 
 const wrapperModifiers = {
   right: () => css`
-    grid-template-areas: "floatimage content";
+    grid-template-areas: 'floatimage content';
     grid-template-columns: 1.3fr 2fr;
     ${Content} {
       text-align: right;
     }
   `,
   left: () => css`
-    grid-template-areas: "content floatimage";
+    grid-template-areas: 'content floatimage';
     grid-template-columns: 2fr 1.3fr;
     ${Content} {
       text-align: left;
