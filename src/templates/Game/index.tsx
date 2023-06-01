@@ -1,12 +1,13 @@
 import Gallery, { GalleryImagesProps } from "components/Gallery";
 import GameInfo, { GameInfoProps } from "components/GameInfo";
 import Base from "templates/Base";
-
 import { GameCardProps } from "components/GameCard";
 import GameDetails, { GameDetailsProps } from "components/GameDetails";
+import { Divider } from "components/Divider";
 import { HighlightProps } from "components/Highlight";
 import Showcase from "components/Showcase";
 import TextContent from "components/TextContent";
+
 import * as S from "./styles";
 
 export type GameTemplateProps = {
@@ -49,7 +50,9 @@ const Game = ({
 
         <S.SectionGameDetails>
           <GameDetails {...details} />
+          <Divider/>
         </S.SectionGameDetails>
+
 
         <Showcase
           title="Upcoming"
