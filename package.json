@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@storybook/addon-knobs": "^6.4.0",
+    "@styled-icons/boxicons-solid": "^10.47.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@types/react-slick": "^0.23.10",
     "next": "12.3.0",
