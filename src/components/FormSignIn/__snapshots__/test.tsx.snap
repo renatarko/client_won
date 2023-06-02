@@ -160,7 +160,6 @@ exports[`FormSignIn should render the form 1`] = `
             </div>
             <input
               class="c5"
-              name="email"
               placeholder="Email"
               type="email"
               value=""
@@ -202,7 +201,6 @@ exports[`FormSignIn should render the form 1`] = `
             </div>
             <input
               class="c5"
-              name="password"
               placeholder="Senha"
               type="password"
               value=""

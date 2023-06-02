@@ -7,7 +7,7 @@ import TextField from ".";
 
 describe("<TextField/>", () => {
   it("Renders with Label", () => {
-    renderWithTheme(<TextField label="Field" labelFor="input" id="input" />);
+    renderWithTheme(<TextField label="Field" name="input" />);
 
     expect(screen.getByLabelText("Field")).toBeInTheDocument();
   });
@@ -47,7 +47,7 @@ describe("<TextField/>", () => {
         icon={<EnvelopeFill data-testid="icon" />}
         iconPosition="right"
         label="TextField"
-        labelFor="TextField"
+        name="TextField"
         errorMessage="error message"
       />
     );
@@ -79,12 +79,7 @@ describe("<TextField/>", () => {
   it("Changes its value when typing", async () => {
     const onInput = jest.fn();
     renderWithTheme(
-      <TextField
-        label="textField"
-        labelFor="textField"
-        id="textField"
-        onInput={onInput}
-      />
+      <TextField label="textField" name="textField" onInput={onInput} />
     );
 
     const input = screen.getByRole("textbox");
