@@ -88,6 +88,10 @@ exports[`<Empty/> should render correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c8 {
@@ -190,7 +194,9 @@ exports[`<Empty/> should render correctly 1`] = `
   <div
     class="c7"
   >
-    Total 
+    <span>
+      Total:
+    </span>
     <p
       class="c8"
     >
