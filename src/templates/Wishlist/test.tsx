@@ -1,16 +1,17 @@
-import { renderWithTheme } from "utils/tests/helpers"
+import { renderWithTheme } from "utils/tests/helpers";
 
-import gamesMock from "components/GameCardSlider/mock"
-import highlightMock from "components/Highlight/mock"
+import gamesMock from "components/GameCardSlider/mock";
+import highlightMock from "components/Highlight/mock";
 
-import Wishlist from "."
-import { screen } from "@testing-library/react"
+import { screen } from "@testing-library/react";
+import Wishlist from ".";
 
 const props = {
   games: gamesMock.slice(0, 4),
   recommendedGames: gamesMock.slice(0, 2),
-  recommendedHighlight: highlightMock
-}
+  recommendedHighlight: highlightMock,
+  recommendedTitle: "You may like these like",
+};
 
 jest.mock("components/Showcase", () => {
   return {
@@ -23,17 +24,27 @@ jest.mock("components/Showcase", () => {
 
 describe("<Wishlist />", () => {
   it("should render correctly", () => {
-    renderWithTheme(<Wishlist {...props}/>)
+    renderWithTheme(<Wishlist {...props} />);
 
-    expect(screen.getByRole("heading", { name: /wishlist/i })).toBeInTheDocument()
-    expect(screen.getAllByText(/population zero/i)).toHaveLength(4)
-    expect(screen.getByTestId("Mock Showcase")).toBeInTheDocument()
-  })
+    expect(
+      screen.getByRole("heading", { name: /wishlist/i })
+    ).toBeInTheDocument();
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(4);
+    expect(screen.getByTestId("Mock Showcase")).toBeInTheDocument();
+  });
 
   it("should render empty when there are no games", () => {
-    renderWithTheme(<Wishlist recommendedGames={gamesMock} recommendedHighlight={highlightMock}/>)
+    renderWithTheme(
+      <Wishlist
+        recommendedGames={gamesMock}
+        recommendedHighlight={highlightMock}
+        recommendedTitle="You may like these like"
+      />
+    );
 
-    expect(screen.queryByText(/population zero/i)).not.toBeInTheDocument()
-    expect(screen.getByRole("heading", {name: /your wishlist is empty/i})).toBeInTheDocument()
-  })
-})
+    expect(screen.queryByText(/population zero/i)).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /your wishlist is empty/i })
+    ).toBeInTheDocument();
+  });
+});

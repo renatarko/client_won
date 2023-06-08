@@ -1,12 +1,12 @@
+import { Divider } from "components/Divider";
 import Gallery, { GalleryImagesProps } from "components/Gallery";
-import GameInfo, { GameInfoProps } from "components/GameInfo";
-import Base from "templates/Base";
 import { GameCardProps } from "components/GameCard";
 import GameDetails, { GameDetailsProps } from "components/GameDetails";
-import { Divider } from "components/Divider";
+import GameInfo, { GameInfoProps } from "components/GameInfo";
 import { HighlightProps } from "components/Highlight";
 import Showcase from "components/Showcase";
 import TextContent from "components/TextContent";
+import Base from "templates/Base";
 
 import * as S from "./styles";
 
@@ -16,9 +16,11 @@ export type GameTemplateProps = {
   gallery?: GalleryImagesProps[];
   description: string;
   details: GameDetailsProps;
+  upcomingTitle: string;
   upcomingGames: GameCardProps[];
   upcomingHighlight: HighlightProps;
   recommendedGames: GameCardProps[];
+  recommendedTitle: string;
 };
 
 const Game = ({
@@ -27,9 +29,11 @@ const Game = ({
   gallery,
   description,
   details,
+  upcomingTitle,
   upcomingGames,
   upcomingHighlight,
   recommendedGames,
+  recommendedTitle,
 }: GameTemplateProps) => {
   return (
     <Base>
@@ -50,16 +54,15 @@ const Game = ({
 
         <S.SectionGameDetails>
           <GameDetails {...details} />
-          <Divider/>
+          <Divider />
         </S.SectionGameDetails>
 
-
         <Showcase
-          title="Upcoming"
+          title={upcomingTitle}
           games={upcomingGames}
           highlight={upcomingHighlight}
         />
-        <Showcase title="You may like these games" games={recommendedGames} />
+        <Showcase title={recommendedTitle} games={recommendedGames} />
       </S.Main>
     </Base>
   );
