@@ -5,6 +5,7 @@ export default {
   title: "GameCard",
   component: GameCard,
   args: {
+    slug: "read-dead-redemption",
     title: "Read Dead Redemption",
     developer: "Rockstar Games",
     img: "./img/red-dead-img.jpg",
