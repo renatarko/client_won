@@ -2,8 +2,6 @@ import { useRouter } from "next/router";
 import Game, { GameTemplateProps } from "templates/Game";
 import { initializeApollo } from "utils/apollo";
 
-import gamesMock from "components/GameCardSlider/mock";
-import highlightMock from "components/Highlight/mock";
 import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from "graphql/queries/games";
 import {
   QueryGameBySlug,
@@ -13,7 +11,15 @@ import {
   QueryGames,
   QueryGamesVariables,
 } from "graphql/queries/generated/QueryGames";
+import { QueryRecommended } from "graphql/queries/generated/QueryRecommended";
+import {
+  QueryUpcoming,
+  QueryUpcomingVariables,
+} from "graphql/queries/generated/QueryUpcoming";
+import { QUERY_RECOMMENDED } from "graphql/queries/recommended";
+import { QUERY_UPCOMING } from "graphql/queries/upcoming";
 import { GetStaticProps } from "next";
+import { gamesMapper, highlightMapper } from "utils/mappers";
 
 const apolloClient = initializeApollo();
 
@@ -41,6 +47,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  // get game data
   const { data } = await apolloClient.query<
     QueryGameBySlug,
     QueryGameBySlugVariables
@@ -55,17 +62,32 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const game = data.games[0];
 
+  // get recommended games
+  const { data: recommended } = await apolloClient.query<QueryRecommended>({
+    query: QUERY_RECOMMENDED,
+  });
+
+  // get upcoming games e highlight
+  const TODAY = new Date().toISOString().slice(0, 10);
+  const { data: upcoming } = await apolloClient.query<
+    QueryUpcoming,
+    QueryUpcomingVariables
+  >({
+    query: QUERY_UPCOMING,
+    variables: { date: TODAY },
+  });
+
   return {
     props: {
       revalidate: 60,
-      cover: `http://localhost:1337${game.cover?.src}`,
+      cover: game.cover?.src,
       gameInfo: {
         title: game.name,
         description: game.short_description,
         price: game.price,
       },
       gallery: game.gallery.map((image) => ({
-        src: `http://localhost:1337${image.src}`,
+        src: image.src,
         labe: image.label,
       })),
       description: game.description,
@@ -77,9 +99,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         rating: game.rating,
         genres: game.categories.map((category) => category.name),
       },
-      upcomingGames: gamesMock,
-      upcomingHighlight: highlightMock,
-      recommendedGames: gamesMock,
+      upcomingTitle: upcoming.showcase?.upcomingGames?.title,
+      upcomingGames: gamesMapper(upcoming.upcomingGames),
+      upcomingHighlight: highlightMapper(
+        upcoming.showcase?.upcomingGames?.highlight
+      ),
+      recommendedGames: gamesMapper(recommended.recommended?.section?.games),
+      recommendedTitle: recommended.recommended?.section?.title,
     },
   };
 };
