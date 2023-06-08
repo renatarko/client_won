@@ -58,6 +58,7 @@ exports[`<Empty/> should render correctly 1`] = `
   font-weight: 600;
   font-size: 1.4rem;
   margin-bottom: 0.8rem;
+  z-index: 10;
 }
 
 .c0 {
