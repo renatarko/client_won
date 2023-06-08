@@ -67,6 +67,7 @@ export const Price = styled.p`
     font-weight: ${theme.font.bold};
     font-size: ${theme.font.sizes.small};
     margin-bottom: ${theme.spacings.xxsmall};
+    z-index: ${theme.layers.base};
   `}
 `;
 
