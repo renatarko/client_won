@@ -1,40 +1,101 @@
-import "match-media-mock";
+import { MockedProvider } from "@apollo/client/testing";
+import "session.mock";
+// import { screen } from "utils/test-utils";
+
+import filterItemsMock from "components/ExploreSidebar/mock";
+import { fetchMoreMock, gamesMock, noGamesMock } from "./mock";
 
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import apolloCache from "utils/apolloCache";
 import { renderWithTheme } from "utils/tests/helpers";
+import Games from ".";
 
-import items from "components/ExploreSidebar/mock";
-import games from "components/GameCardSlider/mock";
-import GamesTemplate from ".";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require("next/router"), "useRouter");
+const push = jest.fn();
 
-jest.mock("components/ExploreSidebar", () => {
-  return {
-    __esModule: true,
-    default: function Mock() {
-      return <div data-testid="Mock ExploreSidebar" />;
-    },
-  };
-});
+useRouter.mockImplementation(() => ({
+  push,
+  query: "",
+  asPath: "",
+  route: "/",
+}));
 
-jest.mock("components/GameCard", () => {
-  return {
-    __esModule: true,
-    default: function Mock() {
-      return <div data-testid="Mock GameCard" />;
-    },
-  };
-});
+jest.mock("templates/Base", () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock Base">{children}</div>;
+  },
+}));
 
-describe("<Games/>", () => {
-  it("should render sections", () => {
+jest.mock("next/link", () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div>{children}</div>;
+  },
+}));
+
+describe("<Games />", () => {
+  it("should render sections", async () => {
     renderWithTheme(
-      <GamesTemplate games={games.splice(0, 2)} filterItems={items} />
+      <MockedProvider mocks={[gamesMock]} addTypename={false}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
     );
 
-    expect(screen.getByTestId("Mock ExploreSidebar")).toBeInTheDocument();
-    expect(screen.getAllByTestId("Mock GameCard")).toHaveLength(2);
+    // we wait until we have data to get the elements
+    // get => tem certeza do elemento
+    // query => Não tem o elemento
+    // find => processos assincronos
+    expect(await screen.findByText(/Price/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Sample Game/i)).toBeInTheDocument();
+
     expect(
-      screen.getByRole("button", { name: /show more/i })
+      await screen.findByRole("button", { name: /show more/i })
     ).toBeInTheDocument();
+  });
+
+  it("should render empty when no games found", async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[noGamesMock]} addTypename={false}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    );
+
+    expect(
+      await screen.findByText(/We didn't find any games with this filter/i)
+    ).toBeInTheDocument();
+  });
+
+  it("should render more games when show more is clicked", async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    );
+
+    expect(await screen.findByText(/Sample Game/i)).toBeInTheDocument();
+
+    userEvent.click(await screen.findByRole("button", { name: /show more/i }));
+
+    expect(await screen.findByText(/Fetch More Game/i)).toBeInTheDocument();
+  });
+
+  it("should change push router when selecting a filter", async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    );
+
+    userEvent.click(await screen.findByRole("checkbox", { name: /windows/i }));
+    userEvent.click(await screen.findByRole("checkbox", { name: /linux/i }));
+    userEvent.click(await screen.findByLabelText(/low to high/i));
+
+    expect(push).toHaveBeenCalledWith({
+      pathname: "/games",
+      query: { platforms: ["windows", "linux"], sort_by: "low-to-high" },
+    });
   });
 });
