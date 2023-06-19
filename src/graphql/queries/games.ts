@@ -1,10 +1,16 @@
-import { gql } from "@apollo/client";
+import { QueryHookOptions, gql, useQuery } from "@apollo/client";
 import { GameFragment } from "graphql/fragments/game";
+import { QueryGames, QueryGamesVariables } from "./generated/QueryGames";
 
 export const QUERY_GAMES = gql`
-  query QueryGames($limit: Int!) {
-    games(limit: $limit) {
+  query QueyGames($limit: Int!, $start: Int, $where: JSON, $sort: String) {
+    games(limit: $limit, start: $start, where: $where, sort: $sort) {
       ...GameFragment
+    }
+    gamesConnection {
+      values {
+        id
+      }
     }
   }
   ${GameFragment}
@@ -41,3 +47,9 @@ export const QUERY_GAME_BY_SLUG = gql`
     }
   }
 `;
+
+export function useQueryGames(
+  options?: QueryHookOptions<QueryGames, QueryGamesVariables>
+) {
+  return useQuery<QueryGames, QueryGamesVariables>(QUERY_GAMES, options);
+}
