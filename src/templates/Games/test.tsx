@@ -1,6 +1,5 @@
 import { MockedProvider } from "@apollo/client/testing";
-import "session.mock";
-// import { screen } from "utils/test-utils";
+// import "session.mock";
 
 import filterItemsMock from "components/ExploreSidebar/mock";
 import { fetchMoreMock, gamesMock, noGamesMock } from "./mock";
