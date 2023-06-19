@@ -2,7 +2,7 @@ import { QueryRecommended } from "graphql/queries/generated/QueryRecommended";
 import { QUERY_RECOMMENDED } from "graphql/queries/recommended";
 import Cart, { CartProps } from "templates/Cart";
 import { initializeApollo } from "utils/apollo";
-import { gamesMapper, highlightMapper } from "utils/mappers";
+import { gamesMapper, highlightMapper } from "utils/mappers/index";
 
 import itemsMock from "components/CartList/mock";
 import paymentOptionMock from "components/PaymentOptions/mock";

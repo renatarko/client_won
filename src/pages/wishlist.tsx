@@ -4,7 +4,7 @@ import { initializeApollo } from "utils/apollo";
 
 import gamesMock from "components/GameCardSlider/mock";
 import Wishlist, { WishlistTemplateProps } from "templates/Wishlist";
-import { gamesMapper, highlightMapper } from "utils/mappers";
+import { gamesMapper, highlightMapper } from "utils/mappers/index";
 
 export default function WishlistPage(props: WishlistTemplateProps) {
   return <Wishlist {...props} />;

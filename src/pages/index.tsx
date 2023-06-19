@@ -6,7 +6,11 @@ import { QUERY_HOME } from "graphql/queries/home";
 
 import Home, { HomeTemplateProps } from "templates/Home";
 import { initializeApollo } from "utils/apollo";
-import { bannerMapper, gamesMapper, highlightMapper } from "utils/mappers";
+import {
+  bannerMapper,
+  gamesMapper,
+  highlightMapper,
+} from "utils/mappers/index";
 
 export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />;
@@ -21,11 +25,12 @@ export async function getStaticProps() {
   } = await apolloClient.query<QueryHome, QueryHomeVariables>({
     query: QUERY_HOME,
     variables: { date: TODAY },
+    fetchPolicy: "no-cache",
   });
 
   return {
+    revalidate: 10,
     props: {
-      revalidate: 10,
       banners: bannerMapper(banners),
       newGames: gamesMapper(newGames),
       newGamesTitle: sections?.newGames?.title,

@@ -19,7 +19,7 @@ import {
 import { QUERY_RECOMMENDED } from "graphql/queries/recommended";
 import { QUERY_UPCOMING } from "graphql/queries/upcoming";
 import { GetStaticProps } from "next";
-import { gamesMapper, highlightMapper } from "utils/mappers";
+import { gamesMapper, highlightMapper } from "utils/mappers/index";
 
 const apolloClient = initializeApollo();
 
@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   >({
     query: QUERY_GAME_BY_SLUG,
     variables: { slug: `${params?.slug}` },
+    fetchPolicy: "no-cache",
   });
 
   if (!data.games.length) {
@@ -78,8 +79,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   return {
+    revalidate: 60,
     props: {
-      revalidate: 60,
       cover: game.cover?.src,
       gameInfo: {
         title: game.name,
