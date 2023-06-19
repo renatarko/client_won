@@ -5,28 +5,28 @@ export default [
     type: "checkbox",
     fields: [
       {
-        name: "under-50",
         label: "Under $50",
+        name: "under-50",
       },
       {
-        name: "under-100",
         label: "Under $100",
+        name: "under-100",
       },
       {
-        name: "under-150",
         label: "Under $150",
+        name: "under-150",
       },
       {
-        name: "under-200",
         label: "Under $200",
+        name: "under-200",
       },
       {
-        name: "free",
         label: "Free",
+        name: "free",
       },
       {
-        name: "discounted",
         label: "Discounted",
+        name: "discounted",
       },
     ],
   },
@@ -36,31 +36,31 @@ export default [
     type: "radio",
     fields: [
       {
-        name: "high-to-low",
         label: "High to low",
+        name: "high-to-low",
       },
       {
-        name: "low-to-high",
         label: "Low to high",
+        name: "low-to-high",
       },
     ],
   },
   {
-    title: "System",
-    name: "",
+    title: "Platforms",
+    name: "platforms",
     type: "checkbox",
     fields: [
       {
-        name: "windows",
         label: "Windows",
+        name: "windows",
       },
       {
-        name: "linux",
         label: "Linux",
+        name: "linux",
       },
       {
-        name: "mac",
-        label: "MAC",
+        label: "MacOS",
+        name: "macos",
       },
     ],
   },
@@ -70,20 +70,36 @@ export default [
     type: "checkbox",
     fields: [
       {
-        name: "action",
         label: "Action",
+        name: "action",
       },
       {
-        name: "adventure",
         label: "Adventure",
+        name: "adventure",
       },
       {
+        label: "FPS",
         name: "fps",
-        label: "Fps",
       },
       {
-        name: "mmorpg",
         label: "MMORPG",
+        name: "mmorpg",
+      },
+      {
+        label: "RPG",
+        name: "rpg",
+      },
+      {
+        label: "Indie",
+        name: "indie",
+      },
+      {
+        label: "Shooters",
+        name: "shooters",
+      },
+      {
+        label: "Simulation",
+        name: "simulation",
       },
     ],
   },

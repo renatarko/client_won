@@ -17,7 +17,7 @@ describe("<ExploreSidebar/>", () => {
       screen.getByRole("heading", { name: /sort by/i })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /system/i })
+      screen.getByRole("heading", { name: /platforms/i })
     ).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /genre/i })).toBeInTheDocument();
   });
@@ -45,7 +45,7 @@ describe("<ExploreSidebar/>", () => {
       <ExploreSidebar
         onFilter={jest.fn}
         items={itemsMock}
-        initialValues={{ windows: true, sort_by: "low-to-high" }}
+        initialValues={{ platforms: ["windows"], sort_by: "low-to-high" }}
       />
     );
 
@@ -59,13 +59,15 @@ describe("<ExploreSidebar/>", () => {
     renderWithTheme(
       <ExploreSidebar
         items={itemsMock}
-        initialValues={{ windows: true, sort_by: "low-to-high" }}
+        initialValues={{ platforms: ["windows"], sort_by: "low-to-high" }}
         onFilter={onFilter}
       />
     );
 
-    await userEvent.click(screen.getByRole("button"));
-    expect(onFilter).toBeCalledWith({ windows: true, sort_by: "low-to-high" });
+    expect(onFilter).toBeCalledWith({
+      platforms: ["windows"],
+      sort_by: "low-to-high",
+    });
   });
 
   it("should filter with checked values", async () => {
@@ -73,11 +75,13 @@ describe("<ExploreSidebar/>", () => {
 
     renderWithTheme(<ExploreSidebar items={itemsMock} onFilter={onFilter} />);
 
-    await userEvent.click(screen.getByLabelText(/windows/i));
-    await userEvent.click(screen.getByLabelText(/low to high/i));
+    userEvent.click(screen.getByLabelText(/windows/i));
+    userEvent.click(screen.getByLabelText(/low to high/i));
 
-    await userEvent.click(screen.getByRole("button", { name: /filter/i }));
-    expect(onFilter).toBeCalledWith({ windows: true, sort_by: "low-to-high" });
+    expect(onFilter).toBeCalledWith({
+      platforms: ["windows"],
+      sort_by: "low-to-high",
+    });
   });
 
   it("should altern between radio options", async () => {
@@ -85,10 +89,9 @@ describe("<ExploreSidebar/>", () => {
 
     renderWithTheme(<ExploreSidebar items={itemsMock} onFilter={onFilter} />);
 
-    await userEvent.click(screen.getByLabelText(/low to high/i));
-    await userEvent.click(screen.getByLabelText(/high to low/i));
+    userEvent.click(screen.getByLabelText(/low to high/i));
+    userEvent.click(screen.getByLabelText(/high to low/i));
 
-    await userEvent.click(screen.getByRole("button", { name: /filter/i }));
     expect(onFilter).toBeCalledWith({ sort_by: "high-to-low" });
   });
 
@@ -108,12 +111,15 @@ describe("<ExploreSidebar/>", () => {
 
     expect(Element).not.toHaveStyleRule("opacity", "1", variant);
 
-    await userEvent.click(screen.getByLabelText(/open filters/));
+    userEvent.click(screen.getByLabelText(/open filters/));
 
     expect(Element).toHaveStyleRule("opacity", "1", variant);
 
-    await userEvent.click(screen.getByLabelText(/close filters/));
+    userEvent.click(screen.getByLabelText(/close filters/));
 
+    expect(Element).not.toHaveStyleRule("opacity", "1", variant);
+
+    userEvent.click(screen.getByRole("button", { name: /filter/i }));
     expect(Element).not.toHaveStyleRule("opacity", "1", variant);
   });
 });

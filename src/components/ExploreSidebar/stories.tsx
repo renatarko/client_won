@@ -11,7 +11,7 @@ export default {
       default: "won-dark",
     },
   },
-  args: { items },
+  args: { items, onFilter: () => console.log("filter") },
 } as Meta;
 
 export const Default: Story<ExploreSidebarProps> = (args) => (
